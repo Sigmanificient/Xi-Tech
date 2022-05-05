@@ -1,0 +1,9 @@
+# IDE configuration folder
+.idea
+
+# builds
+build
+
+# Environment variables
+.env.local
+.env
