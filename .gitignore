@@ -2,8 +2,4 @@
 .idea
 
 # builds
-build
-
-# Environment variables
-.env.local
-.env
+dist
