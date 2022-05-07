@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This script is used to prettify the output of the other scripts.
+
+PRETTIFIER=''
+if [ -x "$(command -v lolcat)" ]
+then
+  PRETTIFIER+='| lolcat'
+fi
+
+eval 'echo' $1 $PRETTIFIER

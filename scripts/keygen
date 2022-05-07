@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This program generates a cryptographically secure random string of a given length
+# Usage: ./keygen <length=16>
+
+KEY=$(tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c ${1:-16})
+./utils/_pretty_print $KEY

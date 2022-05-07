@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Takes a password and generates a hashgen and salt
+# Usage: hashgen <password>
+
+if [ ! -f '../server/.env' ]; then
+    ./utils/_error 'Please create a .env file in the server directory.'
+    exit 1
+fi
+
+source ../server/.env
+
+SALT=$(.key)
+HASH=$(echo -n "$1$SALT$APP_SECRET" | sha512sum)
+
+./utils/_pretty_print "$HASH $SALT"
