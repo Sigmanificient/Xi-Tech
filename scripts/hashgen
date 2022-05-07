@@ -10,7 +10,7 @@ fi
 
 source ../server/.env
 
-SALT=$(.key)
+SALT=$(./keygen)
 HASH=$(echo -n "$1$SALT$APP_SECRET" | sha512sum)
 
 ./utils/_pretty_print "$HASH $SALT"
