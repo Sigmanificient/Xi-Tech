@@ -1,6 +1,6 @@
 # Dependencies
 vendor
-composer-lock.json
+composer.lock
 
 # Environment variables
 .env.local
