@@ -1,0 +1,14 @@
+{
+  "name": "sigmanificent/xi_tech",
+  "autoload": {
+    "psr-4": {
+      "Sigmanificial\\Xi\\": "./"
+    }
+  },
+  "authors": [
+    {
+      "name": "Yohann Boniface",
+      "email": "edhyjox@gmail.com"
+    }
+  ]
+}
