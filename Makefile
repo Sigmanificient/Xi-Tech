@@ -34,21 +34,11 @@ clean: header
 	@ rm -rf server/build server/vendor
 
 
-dist: header server/build
-	@ # Build server
-	@ mkdir -p dist
-	@ cp -r server/build/* dist
-
-
 server/composer.lock:
 	@ composer update -d server
 
-
-server/composer.json:
-	@ composer install -d server
-
-
 server/vendor: server/composer.lock server/composer.json
+	@ composer install -d server
 
 
 server/build: server/vendor
@@ -60,6 +50,21 @@ server/build: server/vendor
 	@ cp -r server/composer.json server/build
 
 	@ echo '*' > server/build/.gitignore
+
+
+client/dist: client/node_modules
+	@ npm run build --prefix client
+
+
+client/node_modules: client/package-lock.json
+	@ npm install --prefix client
+
+
+dist: header server/build client/dist
+	@ # Build server
+	@ mkdir -p dist
+	@ cp -r server/build/* dist
+	@ cp -r client/dist/* dist/public
 
 
 $(LOCAL_SERVER_DIR): header dist
