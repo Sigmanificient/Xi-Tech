@@ -38,13 +38,6 @@ class API
       return;
     }
 
-    $accessible = $endpoint->canAccess($action);
-
-    if (!$accessible) {
-      self::_forbidden();
-      return;
-    }
-
     Response::status(200);
     Response::json($endpoint->$action() ?? []);
   }
