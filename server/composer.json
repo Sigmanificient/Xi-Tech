@@ -2,7 +2,7 @@
   "name": "sigmanificent/xi_tech",
   "autoload": {
     "psr-4": {
-      "Sigmanificial\\Xi\\": "./"
+      "Xi\\": "./"
     }
   },
   "authors": [
