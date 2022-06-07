@@ -1,6 +1,6 @@
 <?php
 
-namespace lmt\core\db;
+namespace Xi\core\db;
 
 
 class Dotenv {
