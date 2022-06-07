@@ -2,6 +2,7 @@
 
 namespace Xi\core\db;
 
+use Xi\core\db\Dotenv;
 use Xi\core\base\Singleton;
 use PDO;
 use PDOStatement;
@@ -14,10 +15,6 @@ use PDOStatement;
 class Database extends Singleton
 {
   private PDO $_conn;
-    private array $queries = [
-        // Generated queries
-    ];
-
   protected function __construct()
   {
     Dotenv::load(ROOT_PATH . '/.env');
@@ -42,9 +39,9 @@ class Database extends Singleton
     );
   }
 
-  public function execute($query_label, $params = []): PDOStatement
+  public function execute($query, $params = []): PDOStatement
   {
-    $stmt = $this->_conn->prepare($this->queries[$query_label]);
+    $stmt = $this->_conn->prepare($query);
     $stmt->execute($params);
     return $stmt;
   }
