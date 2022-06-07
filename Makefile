@@ -30,8 +30,7 @@ clean: header
 	@ rm -rf dist
 
 	@ # Remove client build & node_modules
-	@ rm -rf client/dist client/node_modules
-	@ rm -rf server/build server/vendor
+	@ rm -rf server/build
 
 
 server/composer.lock:
@@ -44,7 +43,7 @@ server/vendor: server/composer.lock server/composer.json
 server/build: server/vendor
 	@ mkdir -p server/build
 
-	@ cp -r server/app server/build
+	@ cp -r server/api server/build
 	@ cp -r server/core server/build
 	@ cp -r server/public server/build
 	@ cp -r server/composer.json server/build
@@ -74,6 +73,12 @@ $(LOCAL_SERVER_DIR): header dist
 
 
 install: header $(LOCAL_SERVER_DIR)
+
+reinstall:
+	make clean
+	make install
+	cd /srv/http/ && composer update
+	make clean
 
 
 uninstall: header
